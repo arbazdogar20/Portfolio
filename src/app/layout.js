@@ -7,14 +7,14 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "John Doe - Full Stack Developer",
+  title: "Muhammad Arbaz Dogar - Full Stack Developer",
   description:
-    "Professional portfolio of John Doe, a passionate Full Stack Developer specializing in modern web technologies including React, Node.js, and cloud solutions.",
+    "Professional portfolio of Muhammad Arbaz Dogar, a passionate Full Stack Developer specializing in modern web technologies including React, Node.js, and cloud solutions.",
   keywords:
     "Full Stack Developer, React, Node.js, JavaScript, Web Development, Portfolio",
-  authors: [{ name: "John Doe" }],
+  authors: [{ name: "Muhammad Arbaz Dogar" }],
   openGraph: {
-    title: "John Doe - Full Stack Developer",
+    title: "Muhammad Arbaz Dogar - Full Stack Developer",
     description:
       "Professional portfolio showcasing full stack development projects and skills",
     type: "website",
