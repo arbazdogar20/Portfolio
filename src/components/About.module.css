@@ -1,0 +1,302 @@
+.about {
+  background: var(--background-alt);
+  position: relative;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.introTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.introDescription {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.achievements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.achievement {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--background);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.achievement:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+}
+
+.achievementIcon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.achievementContent {
+  flex: 1;
+}
+
+.achievementTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.achievementDescription {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.experience {
+  position: relative;
+}
+
+.sectionSubtitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--primary-dark)
+  );
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+.timelineDot {
+  position: absolute;
+  left: -1.5rem;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  border: 3px solid var(--background);
+  box-shadow: 0 0 0 3px var(--primary-color);
+}
+
+.timelineContent {
+  background: var(--background);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 4px solid var(--primary-color);
+}
+
+.timelineContent:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow-medium);
+}
+
+.timelineHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.experienceTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.experiencePeriod {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  white-space: nowrap;
+  background: var(--background-alt);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+}
+
+.experienceCompany {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.experienceDescription {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.personalInfo {
+  background: var(--background);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-medium);
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: var(--background-alt);
+  transition: transform 0.2s ease;
+}
+
+.infoItem:hover {
+  transform: translateY(-2px);
+}
+
+.infoLabel {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.infoValue {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+@media (max-width: 968px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .achievements {
+    grid-template-columns: 1fr;
+  }
+
+  .timelineHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .experiencePeriod {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .introTitle {
+    font-size: 1.8rem;
+  }
+
+  .timeline {
+    padding-left: 1.5rem;
+  }
+
+  .timeline::before {
+    left: 0.75rem;
+  }
+
+  .timelineDot {
+    left: -1.25rem;
+  }
+
+  .timelineContent {
+    padding: 1.25rem;
+  }
+
+  .personalInfo {
+    padding: 2rem;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .introTitle {
+    font-size: 1.5rem;
+  }
+
+  .achievement {
+    padding: 1.25rem;
+  }
+
+  .achievementIcon {
+    font-size: 1.75rem;
+  }
+
+  .personalInfo {
+    padding: 1.5rem;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .infoItem {
+    padding: 0.75rem;
+  }
+}

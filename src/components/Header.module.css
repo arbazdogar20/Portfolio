@@ -1,0 +1,216 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-light);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.logoText {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--primary-dark)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: transform 0.2s ease;
+}
+
+.logoButton:hover .logoText {
+  transform: scale(1.1);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.navLink:hover {
+  color: var(--primary-color);
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cvButton {
+  font-size: 0.9rem;
+  padding: 0.6rem 1.2rem;
+}
+
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.menuToggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--text-primary);
+  transition: all 0.3s ease;
+  border-radius: 1px;
+}
+
+.menuToggle.menuToggleOpen span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menuToggle.menuToggleOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuToggle.menuToggleOpen span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .header {
+    background: rgba(15, 23, 42, 0.95);
+  }
+
+  .header.scrolled {
+    background: rgba(15, 23, 42, 0.98);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: var(--background);
+    border-top: 1px solid var(--border-color);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-medium);
+  }
+
+  .nav.navOpen {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navList {
+    flex-direction: column;
+    padding: 2rem 1rem;
+    gap: 1rem;
+  }
+
+  .navLink {
+    padding: 1rem 0;
+    font-size: 1.1rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .menuToggle {
+    display: flex;
+  }
+
+  .cvButton {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoText {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    height: 60px;
+  }
+
+  .nav {
+    top: 60px;
+  }
+}
