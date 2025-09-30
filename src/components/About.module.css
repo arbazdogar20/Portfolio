@@ -1,302 +1,502 @@
+/* About Section - Modern Design */
 .about {
-  background: var(--background-alt);
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
   position: relative;
+  overflow: hidden;
 }
 
-.content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+.about::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    rgba(59, 130, 246, 0.03) 0%,
+    rgba(139, 92, 246, 0.03) 100%
+  );
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
   margin-bottom: 4rem;
+  position: relative;
+  z-index: 2;
 }
 
-.intro {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.headerSubtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-top: 1rem;
+  font-weight: 400;
 }
 
-.introTitle {
+/* Hero Section */
+.hero {
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.heroContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.heroText {
+  max-width: 600px;
+}
+
+.stat {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.statNumber {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Experience Section */
+.experienceSection {
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.sectionTitle {
   font-size: 2rem;
   font-weight: 700;
+  text-align: center;
   color: var(--text-primary);
-  margin-bottom: 1.5rem;
-  line-height: 1.3;
-}
-
-.introDescription {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-}
-
-.achievements {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-
-.achievement {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1.5rem;
-  background: var(--background);
-  border-radius: 1rem;
-  box-shadow: var(--shadow-light);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.achievement:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-medium);
-}
-
-.achievementIcon {
-  font-size: 2rem;
-  flex-shrink: 0;
-}
-
-.achievementContent {
-  flex: 1;
-}
-
-.achievementTitle {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.25rem;
-}
-
-.achievementDescription {
-  font-size: 0.9rem;
-  color: var(--text-light);
-  margin: 0;
-}
-
-.experience {
+  margin-bottom: 3rem;
   position: relative;
 }
 
-.sectionSubtitle {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 2rem;
-  text-align: center;
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+  border-radius: 2px;
 }
 
 .timeline {
+  max-width: 800px;
+  margin: 0 auto;
   position: relative;
-  padding-left: 2rem;
-}
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 1rem;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(
-    to bottom,
-    var(--primary-color),
-    var(--primary-dark)
-  );
 }
 
 .timelineItem {
+  display: flex;
+  margin-bottom: 3rem;
   position: relative;
-  margin-bottom: 2.5rem;
 }
 
-.timelineItem:last-child {
-  margin-bottom: 0;
+.timelineItem:last-child .timelineLine {
+  display: none;
+}
+
+.timelineMarker {
+  position: relative;
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .timelineDot {
-  position: absolute;
-  left: -1.5rem;
-  top: 0.5rem;
-  width: 12px;
-  height: 12px;
-  background: var(--primary-color);
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  border: 3px solid var(--background);
-  box-shadow: 0 0 0 3px var(--primary-color);
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--primary-dark)
+  );
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  z-index: 2;
+}
+
+.timelineLine {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--primary-color),
+    rgba(59, 130, 246, 0.3)
+  );
+  margin-top: 1rem;
+  min-height: 60px;
 }
 
 .timelineContent {
-  background: var(--background);
-  padding: 1.5rem;
+  flex: 1;
+}
+
+.timelineCard {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
   border-radius: 1rem;
-  box-shadow: var(--shadow-light);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border-left: 4px solid var(--primary-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.timelineContent:hover {
-  transform: translateX(8px);
-  box-shadow: var(--shadow-medium);
+.timelineCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(59, 130, 246, 0.05),
+    transparent
+  );
+  transition: left 0.5s ease;
 }
 
-.timelineHeader {
+.timelineCard:hover::before {
+  left: 100%;
+}
+
+.timelineCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.cardHeader {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 0.5rem;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
-.experienceTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
+.jobTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
   color: var(--text-primary);
   margin: 0;
 }
 
-.experiencePeriod {
+.period {
   font-size: 0.9rem;
   color: var(--primary-color);
-  font-weight: 500;
-  white-space: nowrap;
-  background: var(--background-alt);
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
+  font-weight: 600;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
 }
 
-.experienceCompany {
+.company {
   font-size: 1rem;
-  color: var(--text-secondary);
-  font-weight: 500;
-  margin-bottom: 0.75rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
-.experienceDescription {
-  font-size: 0.95rem;
+.jobDescription {
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--text-secondary);
-  margin: 0;
+  margin-bottom: 1.5rem;
 }
 
-.personalInfo {
-  background: var(--background);
-  border-radius: 1.5rem;
-  padding: 2.5rem;
-  box-shadow: var(--shadow-medium);
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.infoGrid {
+.tech {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--primary-dark)
+  );
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Values Section */
+.valuesSection {
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.valuesGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.infoItem {
-  display: flex;
-  flex-direction: column;
+.valueCard {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 1rem;
   text-align: center;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  background: var(--background-alt);
-  transition: transform 0.2s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
 }
 
-.infoItem:hover {
+.valueCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.valueIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.valueTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.valueDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* CTA Section */
+.ctaSection {
+  position: relative;
+  z-index: 2;
+}
+
+.ctaCard {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--primary-dark)
+  );
+  padding: 3rem 2rem;
+  border-radius: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaCard::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 100%
+  );
+  transform: rotate(45deg);
+}
+
+.ctaTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.ctaDescription {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primaryBtn {
+  background: white;
+  color: var(--primary-color);
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.secondaryBtn {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.secondaryBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
   transform: translateY(-2px);
 }
 
-.infoLabel {
-  font-size: 0.9rem;
-  color: var(--text-light);
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 500;
-}
-
-.infoValue {
-  font-size: 1.1rem;
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-@media (max-width: 968px) {
-  .content {
+/* Responsive Design */
+@media (max-width: 768px) {
+  .heroContent {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
 
-  .achievements {
-    grid-template-columns: 1fr;
+  .heroStats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
-  .timelineHeader {
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .cardHeader {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
   }
 
-  .experiencePeriod {
-    align-self: flex-start;
-  }
-}
-
-@media (max-width: 768px) {
-  .introTitle {
-    font-size: 1.8rem;
+  .timelineItem {
+    margin-bottom: 2rem;
   }
 
-  .timeline {
-    padding-left: 1.5rem;
+  .timelineMarker {
+    margin-right: 1rem;
   }
 
-  .timeline::before {
-    left: 0.75rem;
-  }
-
-  .timelineDot {
-    left: -1.25rem;
-  }
-
-  .timelineContent {
-    padding: 1.25rem;
-  }
-
-  .personalInfo {
-    padding: 2rem;
-  }
-
-  .infoGrid {
-    grid-template-columns: 1fr 1fr;
+  .valuesGrid {
+    grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    width: 200px;
   }
 }
 
 @media (max-width: 480px) {
-  .introTitle {
-    font-size: 1.5rem;
+  .heroStats {
+    grid-template-columns: 1fr;
   }
 
-  .achievement {
-    padding: 1.25rem;
-  }
-
-  .achievementIcon {
-    font-size: 1.75rem;
-  }
-
-  .personalInfo {
+  .stat {
     padding: 1.5rem;
   }
 
-  .infoGrid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .timelineCard {
+    padding: 1.5rem;
   }
 
-  .infoItem {
-    padding: 0.75rem;
+  .valueCard {
+    padding: 1.5rem;
   }
+
+  .ctaCard {
+    padding: 2rem 1rem;
+  }
+}
+.introTitle {
+  font-size: 1.5rem;
+}
+
+.achievement {
+  padding: 1.25rem;
+}
+
+.achievementIcon {
+  font-size: 1.75rem;
+}
+
+.personalInfo {
+  padding: 1.5rem;
+}
+
+.infoGrid {
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.ctaCard {
+  padding: 2rem 1rem;
 }
