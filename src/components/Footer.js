@@ -74,7 +74,7 @@ const Footer = () => {
         <div className={styles.content}>
           <div className={styles.brandSection}>
             <div className={styles.logo}>
-              <span className={styles.logoText}>MD</span>
+              <span className={styles.logoText}>MA</span>
             </div>
             <p className={styles.brandDescription}>
               Full Stack Developer passionate about creating exceptional digital
