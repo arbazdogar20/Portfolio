@@ -40,7 +40,7 @@ const Header = () => {
             onClick={() => scrollToSection("hero")}
             className={styles.logoButton}
           >
-            <span className={styles.logoText}>MD</span>
+            <span className={styles.logoText}>MA</span>
           </button>
         </div>
 
