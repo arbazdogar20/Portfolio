@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import styles from "./Hero.module.css";
+import Image from "next/image";
 
 const Hero = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -10,10 +10,19 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const roles = [
-    "Full Stack Developer",
-    "React/Next.js Developer",
-    "Node.js Developer",
-    "JavaScript Enthusiast",
+    "Software Developer",
+    "Web Developer",
+    "Problem Solver",
+    "Full Stack Engineer",
+  ];
+
+  const techStack = [
+    { name: "React", icon: "/images/react.png" },
+    { name: "Next.js", icon: "/images/next.png" },
+    { name: "Node.js", icon: "/images/node.png" },
+    { name: "Express.js", icon: "/images/expressjs.svg" },
+    { name: "MongoDB", icon: "/images/mongodb.png" },
+    { name: "TypeScript", icon: "/images/typescript.png" },
   ];
 
   useEffect(() => {
@@ -23,32 +32,28 @@ const Hero = () => {
       const currentRole = roles[currentRoleIndex];
 
       if (!isDeleting) {
-        // Typing phase
         if (currentText.length < currentRole.length) {
           setCurrentText(currentRole.substring(0, currentText.length + 1));
-          timeout = setTimeout(handleTyping, 40);
+          timeout = setTimeout(handleTyping, 80);
         } else {
-          // Finished typing, wait then start deleting
           timeout = setTimeout(() => {
             setIsDeleting(true);
             handleTyping();
-          }, 1000);
+          }, 2000);
         }
       } else {
-        // Deleting phase
         if (currentText.length > 0) {
           setCurrentText(currentText.substring(0, currentText.length - 1));
-          timeout = setTimeout(handleTyping, 20);
+          timeout = setTimeout(handleTyping, 50);
         } else {
-          // Finished deleting, move to next role
           setIsDeleting(false);
           setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-          timeout = setTimeout(handleTyping, 200);
+          timeout = setTimeout(handleTyping, 300);
         }
       }
     };
 
-    timeout = setTimeout(handleTyping, 200);
+    timeout = setTimeout(handleTyping, 500);
 
     return () => {
       if (timeout) {
@@ -75,7 +80,7 @@ const Hero = () => {
             </div>
 
             <h1 className={styles.name}>
-              Muhammad Arbaz <span className={styles.highlight}>Dogar</span>
+              Muhammad <span className={styles.highlight}>Arbaz</span>
             </h1>
 
             <div className={styles.roleContainer}>
@@ -87,37 +92,22 @@ const Hero = () => {
             </div>
 
             <p className={styles.description}>
-              Passionate about creating exceptional digital experiences through
-              clean code and innovative solutions. I specialize in modern web
-              technologies and love turning complex problems into simple,
-              beautiful designs.
+              I build scalable web applications that drive business success.
+              With clean, efficient code and innovative solutions, I transform
+              complex challenges into user-friendly digital experiences that
+              deliver measurable results.
             </p>
-
-            <div className={styles.stats}>
-              <div className={styles.stat}>
-                <span className={styles.statNumber}>2+</span>
-                <span className={styles.statLabel}>Years Experience</span>
-              </div>
-              <div className={styles.stat}>
-                <span className={styles.statNumber}>10+</span>
-                <span className={styles.statLabel}>Projects Completed</span>
-              </div>
-              <div className={styles.stat}>
-                <span className={styles.statNumber}>100%</span>
-                <span className={styles.statLabel}>Client Satisfaction</span>
-              </div>
-            </div>
 
             <div className={styles.actions}>
               <button
                 onClick={() => scrollToSection("projects")}
-                className="btn btn-primary"
+                className={`${styles.btn} ${styles.btnPrimary}`}
               >
                 View My Work
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
-                className="btn btn-secondary"
+                className={`${styles.btn} ${styles.btnSecondary}`}
               >
                 Get In Touch
               </button>
@@ -172,23 +162,79 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className={styles.imageContent}>
-            <div className={styles.imageContainer}>
-              <div className={styles.imageBg}></div>
-              <Image
-                src="/images/profile.png"
-                alt="Muhammad Arbaz Dogar - Full Stack Developer"
-                width={300}
-                height={300}
-                className={styles.profileImage}
-                priority
-              />
-              <div className={styles.floatingElements}>
-                <div className={styles.floatingElement}>React</div>
-                <div className={styles.floatingElement}>Node.js</div>
-                <div className={styles.floatingElement}>TypeScript</div>
-                <div className={styles.floatingElement}>AWS</div>
+          <div className={styles.codeVisualization}>
+            <div className={styles.codeWindow}>
+              <div className={styles.windowHeader}>
+                <div className={styles.windowButtons}>
+                  <span className={styles.closeBtn}></span>
+                  <span className={styles.minimizeBtn}></span>
+                  <span className={styles.maximizeBtn}></span>
+                </div>
+                <span className={styles.fileName}>portfolio.js</span>
               </div>
+              <div className={styles.codeContent}>
+                <div className={styles.codeLine}>
+                  <span className={styles.lineNumber}>1</span>
+                  <span
+                    className={styles.keyword}
+                    style={{ marginRight: "4px" }}
+                  >
+                    const
+                  </span>
+                  <span className={styles.variable}>developer</span>
+                  <span className={styles.operator}> = </span>
+                  <span className={styles.string}>{"{"}</span>
+                </div>
+                <div className={styles.codeLine}>
+                  <span className={styles.lineNumber}>2</span>
+                  <span className={styles.property}> name</span>
+                  <span className={styles.operator}>: </span>
+                  <span className={styles.string}>'Muhammad Arbaz'</span>,
+                </div>
+                <div className={styles.codeLine}>
+                  <span className={styles.lineNumber}>3</span>
+                  <span className={styles.property}> skills</span>
+                  <span className={styles.operator}>: </span>
+                  <span className={styles.string}>
+                    ['React', 'Node.js', 'Next.js']
+                  </span>
+                  ,
+                </div>
+                <div className={styles.codeLine}>
+                  <span className={styles.lineNumber}>4</span>
+                  <span className={styles.property}> passion</span>
+                  <span className={styles.operator}>: </span>
+                  <span className={styles.string}>'Building Amazing Apps'</span>
+                  ,
+                </div>
+                <div className={styles.codeLine}>
+                  <span className={styles.lineNumber}>5</span>
+                  <span className={styles.property}> hireable</span>
+                  <span className={styles.operator}>: </span>
+                  <span className={styles.boolean}>true</span>
+                </div>
+                <div className={styles.codeLine}>
+                  <span className={styles.lineNumber}>6</span>
+                  <span className={styles.string}>{"}"}</span>;
+                </div>
+              </div>
+            </div>
+
+            {/* Tech Stack */}
+            <div className={styles.techStack}>
+              {techStack.map((tech, index) => (
+                <div className={styles.techItem} key={index}>
+                  <div className={styles.techIcon}>
+                    <Image
+                      src={tech.icon}
+                      alt={tech.name}
+                      width={20}
+                      height={20}
+                    />
+                  </div>
+                  <span>{tech.name}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
