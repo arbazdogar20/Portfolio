@@ -19,6 +19,11 @@ export const metadata = {
       "Professional portfolio showcasing full stack development projects and skills",
     type: "website",
   },
+  icons: {
+    icon: "/favicon-a.svg",
+    shortcut: "/favicon-a.svg",
+    apple: "/favicon-a.svg",
+  },
 };
 
 export default function RootLayout({ children }) {
