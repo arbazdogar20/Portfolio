@@ -4,17 +4,15 @@ import { useState, useEffect } from "react";
 import styles from "./Hero.module.css";
 import Image from "next/image";
 
+const ROLES = [
+  "Software Developer",
+  "Web Developer",
+  "Problem Solver",
+  "Full Stack Engineer",
+];
+
 const Hero = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [currentText, setCurrentText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const roles = [
-    "Software Developer",
-    "Web Developer",
-    "Problem Solver",
-    "Full Stack Engineer",
-  ];
 
   const techStack = [
     { name: "React", icon: "/images/react.png" },
@@ -26,41 +24,12 @@ const Hero = () => {
   ];
 
   useEffect(() => {
-    let timeout;
+    const interval = setInterval(() => {
+      setCurrentRoleIndex((prev) => (prev + 1) % ROLES.length);
+    }, 2000);
 
-    const handleTyping = () => {
-      const currentRole = roles[currentRoleIndex];
-
-      if (!isDeleting) {
-        if (currentText.length < currentRole.length) {
-          setCurrentText(currentRole.substring(0, currentText.length + 1));
-          timeout = setTimeout(handleTyping, 80);
-        } else {
-          timeout = setTimeout(() => {
-            setIsDeleting(true);
-            handleTyping();
-          }, 2000);
-        }
-      } else {
-        if (currentText.length > 0) {
-          setCurrentText(currentText.substring(0, currentText.length - 1));
-          timeout = setTimeout(handleTyping, 50);
-        } else {
-          setIsDeleting(false);
-          setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-          timeout = setTimeout(handleTyping, 300);
-        }
-      }
-    };
-
-    timeout = setTimeout(handleTyping, 500);
-
-    return () => {
-      if (timeout) {
-        clearTimeout(timeout);
-      }
-    };
-  }, [currentText, isDeleting, currentRoleIndex, roles]);
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -86,8 +55,18 @@ const Hero = () => {
             <div className={styles.roleContainer}>
               <span className={styles.rolePrefix}>I'm a </span>
               <span className={styles.role}>
-                {currentText}
-                <span className={styles.cursor}>|</span>
+                <span
+                  className={styles.roleTrack}
+                  style={{
+                    transform: `translateY(-${currentRoleIndex * 1.2}em)`,
+                  }}
+                >
+                  {ROLES.map((role) => (
+                    <span key={role} className={styles.roleItem}>
+                      {role}
+                    </span>
+                  ))}
+                </span>
               </span>
             </div>
 
