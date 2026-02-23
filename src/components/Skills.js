@@ -2,6 +2,43 @@
 
 import styles from "./Skills.module.css";
 
+const PRIMARY_SKILLS = new Set([
+  "React",
+  "Node.js",
+  "Next.js",
+  "TypeScript",
+  "MongoDB",
+  "AWS",
+]);
+
+const SKILL_ICONS = {
+  React: "⚛️",
+  "Next.js": "▲",
+  JavaScript: "🟨",
+  TypeScript: "🔷",
+  "Node.js": "🟢",
+  "Express.js": "🚀",
+  Python: "🐍",
+  "REST APIs": "🔌",
+  GraphQL: "◈",
+  PostgreSQL: "🐘",
+  MongoDB: "🍃",
+  Redis: "🧠",
+  Firebase: "🔥",
+  AWS: "☁️",
+  Docker: "🐳",
+  Vercel: "▴",
+  "CI/CD": "⚙️",
+  Linux: "🐧",
+  Git: "⑂",
+  Figma: "🎨",
+  Jest: "🧪",
+  Webpack: "📦",
+  "VS Code": "🧩",
+  "Tailwind CSS": "🌬️",
+  "HTML5 & CSS3": "🧱",
+};
+
 const Skills = () => {
   const skillCategories = [
     {
@@ -44,17 +81,25 @@ const Skills = () => {
         </div>
 
         <div className={styles.skillsGrid}>
-          {skillCategories.map((category, index) => (
-            <div key={index} className={styles.skillCategory}>
+          {skillCategories.map((category) => (
+            <article key={category.title} className={styles.skillCategory}>
               <h3 className={styles.categoryTitle}>{category.title}</h3>
               <div className={styles.skillsList}>
-                {category.skills.map((skill, skillIndex) => (
-                  <span key={skillIndex} className={styles.skillTag}>
-                    {skill}
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className={`${styles.skillTag} ${
+                      PRIMARY_SKILLS.has(skill) ? styles.primarySkill : ""
+                    }`}
+                  >
+                    <span className={styles.skillIcon} aria-hidden="true">
+                      {SKILL_ICONS[skill] || "•"}
+                    </span>
+                    <span>{skill}</span>
                   </span>
                 ))}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

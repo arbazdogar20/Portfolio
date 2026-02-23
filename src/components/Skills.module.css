@@ -1,7 +1,7 @@
 /* Professional Skills Section */
 .skillsSection {
   padding: 100px 0;
-  background-color: #ffffff;
+  background-color: var(--background);
   position: relative;
 }
 
@@ -19,13 +19,13 @@
 .sectionHeader h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1a202c;
+  color: var(--text-primary);
   margin-bottom: 1rem;
   position: relative;
 }
 
 .sectionHeader h2::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -37,7 +37,7 @@
 
 .sectionHeader p {
   font-size: 1.1rem;
-  color: #64748b;
+  color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
@@ -45,30 +45,35 @@
 
 .skillsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 40px;
-  margin-bottom: 80px;
+  align-items: stretch;
 }
 
 .skillCategory {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--background-alt);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 30px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
 }
 
 .skillCategory:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-medium);
   border-color: var(--primary-color);
 }
 
 .categoryTitle {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #1a202c;
+  color: var(--text-primary);
   margin-bottom: 20px;
   text-align: center;
   position: relative;
@@ -76,7 +81,7 @@
 }
 
 .categoryTitle::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -91,18 +96,24 @@
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
+  align-content: flex-start;
+  min-height: 140px;
 }
 
 .skillTag {
-  background: #f8fafc;
-  color: #475569;
+  background: var(--background);
+  color: var(--text-secondary);
   padding: 8px 16px;
   border-radius: 25px;
   font-size: 0.9rem;
   font-weight: 500;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
   transition: all 0.3s ease;
   cursor: default;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
 }
 
 .skillTag:hover {
@@ -112,48 +123,21 @@
   transform: translateY(-2px);
 }
 
-.experienceHighlight {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 30px;
-  margin-top: 60px;
-}
-
-.experienceCard {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 40px;
-  border-radius: 15px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.experienceCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transition: left 0.5s ease;
-}
-
-.experienceCard:hover::before {
-  left: 100%;
-}
-
-.experienceCard h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-.experienceCard p {
-  font-size: 1rem;
-  line-height: 1.6;
+.skillIcon {
+  font-size: 0.85rem;
+  line-height: 1;
   opacity: 0.9;
+}
+
+.primarySkill {
+  color: var(--primary-color);
+  border-color: rgba(59, 130, 246, 0.35);
+  background: rgba(59, 130, 246, 0.1);
+  font-weight: 600;
+}
+
+.primarySkill .skillIcon {
+  opacity: 1;
 }
 
 /* Responsive Design */
@@ -173,7 +157,6 @@
   .skillsGrid {
     grid-template-columns: 1fr;
     gap: 30px;
-    margin-bottom: 60px;
   }
 
   .skillCategory {
@@ -182,19 +165,6 @@
 
   .categoryTitle {
     font-size: 1.2rem;
-  }
-
-  .experienceHighlight {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .experienceCard {
-    padding: 30px;
-  }
-
-  .experienceCard h3 {
-    font-size: 1.3rem;
   }
 }
 
@@ -218,9 +188,10 @@
   .skillTag {
     font-size: 0.8rem;
     padding: 6px 12px;
+    gap: 6px;
   }
 
-  .experienceCard {
-    padding: 25px;
+  .skillsList {
+    min-height: auto;
   }
 }
