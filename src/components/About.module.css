@@ -1,6 +1,10 @@
 /* About Section - Modern Design */
 .about {
-  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  background: linear-gradient(
+    135deg,
+    var(--background-alt) 0%,
+    var(--background) 100%
+  );
   position: relative;
   overflow: hidden;
 }
@@ -30,9 +34,10 @@
 
 .headerSubtitle {
   font-size: 1.2rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   margin-top: 1rem;
-  font-weight: 400;
+  font-weight: 500;
+  opacity: 0.9;
 }
 
 /* Hero Section */
@@ -54,19 +59,21 @@
 }
 
 .stat {
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--background);
   padding: 2rem;
   border-radius: 1rem;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
   backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .stat:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-medium);
 }
 
 .statNumber {
@@ -136,20 +143,22 @@
 }
 
 .timelineDot {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: linear-gradient(
     135deg,
     var(--primary-color),
     var(--primary-dark)
   );
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  box-shadow:
+    0 0 0 5px rgba(59, 130, 246, 0.25),
+    0 6px 14px rgba(37, 99, 235, 0.25);
   z-index: 2;
 }
 
 .timelineLine {
-  width: 2px;
+  width: 3px;
   height: 100%;
   background: linear-gradient(
     180deg,
@@ -165,11 +174,11 @@
 }
 
 .timelineCard {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--background);
   padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
   position: relative;
@@ -198,7 +207,7 @@
 
 .timelineCard:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-medium);
 }
 
 .cardHeader {
@@ -211,10 +220,11 @@
 }
 
 .jobTitle {
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.45rem;
+  font-weight: 800;
   color: var(--text-primary);
   margin: 0;
+  line-height: 1.3;
 }
 
 .period {
@@ -235,28 +245,51 @@
 
 .jobDescription {
   font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
+  line-height: 1.7;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
+}
+
+.achievements {
+  margin: 0 0 1.5rem;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.achievementItem {
+  color: var(--text-primary);
+  line-height: 1.65;
+  font-size: 0.98rem;
 }
 
 .technologies {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .tech {
-  background: linear-gradient(
-    135deg,
-    var(--primary-color),
-    var(--primary-dark)
-  );
-  color: white;
-  padding: 0.3rem 0.8rem;
+  background: rgba(59, 130, 246, 0.12);
+  color: var(--primary-dark);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  padding: 0.4rem 0.9rem;
   border-radius: 15px;
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+  white-space: nowrap;
+}
+
+.tech:hover {
+  background: var(--primary-color);
+  color: var(--background);
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
 }
 
 /* Values Section */
@@ -275,19 +308,19 @@
 }
 
 .valueCard {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--background);
   padding: 2rem;
   border-radius: 1rem;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
 
 .valueCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-medium);
 }
 
 .valueIcon {
@@ -389,7 +422,7 @@
 }
 
 .primaryBtn {
-  background: white;
+  background: var(--background);
   color: var(--primary-color);
 }
 

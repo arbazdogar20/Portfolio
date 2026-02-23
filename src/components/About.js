@@ -7,16 +7,22 @@ const About = () => {
       title: "Full Stack Developer",
       company: "Desol Int.",
       period: "2022 - 2024",
-      description:
-        "Leading development of scalable web applications using React, Next.js, Node.js, and MongoDB. Mentoring junior developers and implementing best practices.",
+      achievements: [
+        "Delivered end-to-end features across 5 core technologies: React, Next.js, Node.js, MongoDB, and Socket.io.",
+        "Mentored junior developers through code reviews and practical implementation guidance.",
+        "Applied scalable architecture and clean coding standards to improve long-term maintainability.",
+      ],
       technologies: ["React", "Next.js", "Node.js", "MongoDB", "Socket.io"],
     },
     {
       title: "Frontend Developer",
       company: "Tech Solutions",
       period: "2021 - 2022",
-      description:
-        "Built responsive web applications with modern JavaScript frameworks. Collaborated with design teams to create pixel-perfect user interfaces.",
+      achievements: [
+        "Built responsive interfaces with 4 key frontend tools: React, JavaScript, CSS3, and Git workflows.",
+        "Partnered closely with design teams to deliver pixel-accurate and accessible UI components.",
+        "Improved consistency across reusable UI patterns for faster feature delivery.",
+      ],
       technologies: ["React", "JavaScript", "CSS3", "Git"],
     },
   ];
@@ -47,10 +53,19 @@ const About = () => {
                       <span className={styles.period}>{exp.period}</span>
                     </div>
                     <p className={styles.company}>{exp.company}</p>
-                    <p className={styles.jobDescription}>{exp.description}</p>
+                    <ul className={styles.achievements}>
+                      {exp.achievements.map((achievement) => (
+                        <li
+                          key={achievement}
+                          className={styles.achievementItem}
+                        >
+                          {achievement}
+                        </li>
+                      ))}
+                    </ul>
                     <div className={styles.technologies}>
-                      {exp.technologies.map((tech, techIndex) => (
-                        <span key={techIndex} className={styles.tech}>
+                      {exp.technologies.map((tech) => (
+                        <span key={tech} className={styles.tech}>
                           {tech}
                         </span>
                       ))}
