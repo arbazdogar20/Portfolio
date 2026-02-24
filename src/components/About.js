@@ -14,17 +14,6 @@ const About = () => {
       ],
       technologies: ["React", "Next.js", "Node.js", "MongoDB", "Socket.io"],
     },
-    {
-      title: "Frontend Developer",
-      company: "Tech Solutions",
-      period: "2021 - 2022",
-      achievements: [
-        "Built responsive interfaces with 4 key frontend tools: React, JavaScript, CSS3, and Git workflows.",
-        "Partnered closely with design teams to deliver pixel-accurate and accessible UI components.",
-        "Improved consistency across reusable UI patterns for faster feature delivery.",
-      ],
-      technologies: ["React", "JavaScript", "CSS3", "Git"],
-    },
   ];
 
   return (
