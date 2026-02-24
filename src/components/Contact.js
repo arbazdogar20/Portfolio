@@ -1,41 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import styles from "./Contact.module.css";
+import { sendContactUsEmail } from "@/lib/actions/nodemailer.arctions";
+import SubmitButton from "./SubmitButton";
+
+const initialState = {
+  success: null,
+  message: "",
+};
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
-      setSubmitStatus("error");
-    }
-
-    setIsSubmitting(false);
-    setTimeout(() => setSubmitStatus(null), 5000);
-  };
+  const [state, formAction] = React.useActionState(
+    sendContactUsEmail,
+    initialState,
+  );
 
   const contactInfo = [
     {
@@ -203,7 +182,7 @@ const Contact = () => {
           <div className={styles.contactForm}>
             <h3 className={styles.sectionSubtitle}>Send a Message</h3>
 
-            {submitStatus === "success" && (
+            {state.success === true && (
               <div className={styles.successMessage}>
                 <svg
                   width="20"
@@ -218,7 +197,7 @@ const Contact = () => {
               </div>
             )}
 
-            {submitStatus === "error" && (
+            {state.success === false && (
               <div className={styles.errorMessage}>
                 <svg
                   width="20"
@@ -236,7 +215,7 @@ const Contact = () => {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className={styles.form}>
+            <form action={formAction} className={styles.form}>
               <div className={styles.formRow}>
                 <div className={styles.inputGroup}>
                   <label htmlFor="name" className={styles.label}>
@@ -246,8 +225,6 @@ const Contact = () => {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     required
                     className={styles.input}
                     placeholder="Your full name"
@@ -261,8 +238,6 @@ const Contact = () => {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
                     className={styles.input}
                     placeholder="your.email@example.com"
@@ -278,8 +253,6 @@ const Contact = () => {
                   type="text"
                   id="subject"
                   name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
                   required
                   className={styles.input}
                   placeholder="What's this about?"
@@ -293,8 +266,6 @@ const Contact = () => {
                 <textarea
                   id="message"
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
                   required
                   rows={6}
                   className={styles.textarea}
@@ -302,34 +273,7 @@ const Contact = () => {
                 />
               </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`btn btn-primary ${styles.submitBtn} ${
-                  isSubmitting ? styles.submitting : ""
-                }`}
-              >
-                {isSubmitting ? (
-                  <>
-                    <span className={styles.spinner}></span>
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    Send Message
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                    >
-                      <line x1="22" y1="2" x2="11" y2="13" />
-                      <polygon points="22,2 15,22 11,13 2,9 22,2" />
-                    </svg>
-                  </>
-                )}
-              </button>
+              <SubmitButton />
             </form>
           </div>
         </div>
