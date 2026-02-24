@@ -20,7 +20,6 @@ const SKILL_ICONS = {
   "Express.js": "🚀",
   Python: "🐍",
   "REST APIs": "🔌",
-  GraphQL: "◈",
   PostgreSQL: "🐘",
   MongoDB: "🍃",
   Redis: "🧠",
@@ -31,7 +30,6 @@ const SKILL_ICONS = {
   "CI/CD": "⚙️",
   Linux: "🐧",
   Git: "⑂",
-  Figma: "🎨",
   Jest: "🧪",
   Webpack: "📦",
   "VS Code": "🧩",
@@ -54,7 +52,7 @@ const Skills = () => {
     },
     {
       title: "Backend Development",
-      skills: ["Node.js", "Express.js", "Python", "REST APIs", "GraphQL"],
+      skills: ["Node.js", "Express.js", "Python", "REST APIs", "Puter.js"],
     },
     {
       title: "Database & Storage",
@@ -66,7 +64,7 @@ const Skills = () => {
     },
     {
       title: "Tools & Others",
-      skills: ["Git", "Figma", "Jest", "Webpack", "VS Code"],
+      skills: ["Git", "Jest", "Webpack", "VS Code"],
     },
   ];
 
